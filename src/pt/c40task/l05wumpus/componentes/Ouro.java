@@ -1,8 +1,8 @@
 package src.pt.c40task.l05wumpus.componentes;
 
-public class Ouro implements Componente{
+public class Ouro extends Sala{
     @Override
     public char apresenta() {
-        return 'O';
+        return revealed ? 'O' : '-';
     }
 }

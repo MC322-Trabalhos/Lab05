@@ -1,9 +1,9 @@
 package src.pt.c40task.l05wumpus.componentes;
 
-public class Buraco implements Componente{
+public class Buraco extends Sala{
 
     @Override
     public char apresenta() {
-        return 'B';
+        return revealed ? 'B' : '-';
     }
 }

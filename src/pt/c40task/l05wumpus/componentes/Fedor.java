@@ -1,8 +1,8 @@
 package src.pt.c40task.l05wumpus.componentes;
 
-public class Fedor implements Componente {
+public class Fedor extends Sala {
     @Override
     public char apresenta() {
-        return 'f';
+        return revealed ? 'f' : '-';
     }
 }

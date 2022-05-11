@@ -1,6 +1,8 @@
 package src.pt.c40task.l05wumpus;
 
+import src.pt.c40task.l05wumpus.componentes.Caverna;
 import src.pt.c40task.l05wumpus.utils.Acao;
+
 
 public class AppWumpus {
 
@@ -20,7 +22,11 @@ public class AppWumpus {
       
       String[][] cave = tk.retrieveCave();
       System.out.println("=== Caverna");
-      MontadorCaverna.montaCaverna(cave);
+      // TODO CHECAR IRREGULARIDADES COM O MAPA
+      // TODO FAZER A CLASSE JOGO
+      // TODO MOVIMENTO DO JOGADOR
+      Caverna c = MontadorCaverna.montaCaverna(cave);
+      System.out.println(c);
 
 //      for (String[] strings : cave) {
 //         for (int c = 0; c < strings.length; c++)

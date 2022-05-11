@@ -1,9 +1,9 @@
 package src.pt.c40task.l05wumpus.componentes;
 
-public class Wumpus implements Componente{
+public class Wumpus extends Sala{
 
     @Override
     public char apresenta() {
-        return 'W';
+        return revealed ? 'W' : '-';
     }
 }
