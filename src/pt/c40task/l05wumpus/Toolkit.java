@@ -1,4 +1,4 @@
-package pt.c40task.l05wumpus;
+package src.pt.c40task.l05wumpus;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,7 +10,7 @@ import java.util.Vector;
 public class Toolkit {
    public static String DIRETORIO = System.getProperty("user.dir") +
 		                            "/src/pt/c40task/l05wumpus/";
-   
+
    private static Toolkit tk;
    
    private BufferedReader moveStr, caveStr;
