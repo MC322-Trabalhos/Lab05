@@ -1,6 +1,6 @@
 package src.pt.c40task.l05wumpus.componentes;
 
-public class Ouro extends Sala{
+public class Ouro extends Componente{
 
     public Ouro(){
         tipo = 'O';
@@ -8,6 +8,6 @@ public class Ouro extends Sala{
 
     @Override
     public String toString() {
-        return "Voce encontrou o Ouro!!!!";
+        return "Ouro";
     }
 }

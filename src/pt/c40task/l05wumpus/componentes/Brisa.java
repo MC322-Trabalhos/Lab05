@@ -1,6 +1,6 @@
 package src.pt.c40task.l05wumpus.componentes;
 
-public class Brisa extends Sala{
+public class Brisa extends Componente{
 
     public Brisa(){
         tipo = 'b';
@@ -8,6 +8,6 @@ public class Brisa extends Sala{
 
     @Override
     public String toString() {
-        return "Voce sente uma leve brisa";
+        return "Brisa";
     }
 }

@@ -1,6 +1,6 @@
 package src.pt.c40task.l05wumpus.componentes;
 
-public class Fedor extends Sala {
+public class Fedor extends Componente {
 
     public Fedor(){
         tipo = 'f';
@@ -8,6 +8,6 @@ public class Fedor extends Sala {
 
     @Override
     public String toString() {
-        return "Voce sente um fedor forte de carne podre";
+        return "Fedor";
     }
 }

@@ -8,7 +8,7 @@ public class Caverna {
     }
 
     public void desocupaSala(Player jogador){
-        getSala(jogador.getPos()).desocupa();
+        getSala(jogador.getPos()).desocupa(jogador);
     }
 
     public void ocupaNovaSala(Player jogador){

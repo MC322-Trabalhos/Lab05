@@ -2,15 +2,17 @@ package src.pt.c40task.l05wumpus.componentes;
 
 import src.pt.c40task.l05wumpus.utils.Acao;
 
-public class Player {
+public class Player extends Componente{
     private final String nome;
     private boolean flechaEquipada = false, vivo = true;
-    private int numFlechas = 2;
+    private int numFlechas = 1;
     private int[] pos;
+    private boolean pegouOuro = false;
 
     public Player(String nome) {
         this.nome = nome;
         pos = new int[]{0, 0};
+        tipo = 'P';
     }
 
     public void equipaFlecha() {
@@ -20,7 +22,7 @@ public class Player {
         }
     }
 
-    public boolean agir(Acao acao){
+    public boolean agir(Acao acao, Sala salaAtual){
         switch (acao){
             case UP:
                 if (pos[0] - 1 >= 0) pos[0]--;
@@ -34,6 +36,17 @@ public class Player {
             case RIGHT:
                 if (pos[1] + 1 < 4) pos[1]++;
                 break;
+            case CAPTURE:
+            	Componente ouro = salaAtual.getComponente('O');
+            	if(ouro != null) {
+            		salaAtual.retirarComponente(ouro);
+            		this.pegouOuro = true;
+            	}
+            	break;
+            case ARROW:
+            	equipaFlecha();
+            case INVALID:
+            	return false;
         }
         return true;
     }

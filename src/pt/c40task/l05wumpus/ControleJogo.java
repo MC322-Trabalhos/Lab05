@@ -24,17 +24,21 @@ public class ControleJogo {
         caverna.ocupaNovaSala(jogador);
         System.out.println(caverna);
         System.out.println("Player: " + jogador.getNome());
-        while (comando != Acao.QUIT) {
+        while (comando != Acao.QUIT && jogador.isVivo()) {
             comando = leAcao();
             caverna.desocupaSala(jogador);
-            jogador.agir(comando);
+            jogador.agir(comando, caverna.getSala(jogador.getPos()));
             caverna.ocupaNovaSala(jogador);
 
-            System.out.println(caverna);
+            System.out.print(caverna);
             System.out.println("Player: " + jogador.getNome());
-            System.out.println(caverna.getSala(jogador.getPos()));
+            System.out.print(caverna.getSala(jogador.getPos()));
             System.out.println("Score: " + score);
             if (comando == Acao.QUIT) System.out.println("Volte sempre !");
+            if (!jogador.isVivo()) {
+            	System.out.println("Voce morreu!");
+            	break;
+            }
         }
     }
 
