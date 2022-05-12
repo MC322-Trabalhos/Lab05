@@ -7,7 +7,7 @@ import src.pt.c40task.l05wumpus.utils.Acao;
 public class AppWumpus {
 
 //   public static void main(String[] args) {
-//
+//      System.out.println((new int[2])[1]);
 //   }
    public static void main(String[] args) {
       AppWumpus.executaJogo(
@@ -22,11 +22,11 @@ public class AppWumpus {
       
       String[][] cave = tk.retrieveCave();
       System.out.println("=== Caverna");
-      // TODO CHECAR IRREGULARIDADES COM O MAPA
       // TODO FAZER A CLASSE JOGO
       // TODO MOVIMENTO DO JOGADOR
-      Caverna c = MontadorCaverna.montaCaverna(cave);
-      System.out.println(c);
+
+      ControleJogo jogo = new ControleJogo(cave);
+      jogo.run();
 
 //      for (String[] strings : cave) {
 //         for (int c = 0; c < strings.length; c++)

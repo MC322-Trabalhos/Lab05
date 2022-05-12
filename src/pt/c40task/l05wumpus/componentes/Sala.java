@@ -1,9 +1,21 @@
 package src.pt.c40task.l05wumpus.componentes;
 
 public class Sala {
-    protected boolean revealed = true;
+    protected char atual = '-', tipo = '#';
+
+    public void ocupa(Player jogador){
+        atual = 'P';
+    }
+
+    public void desocupa(){
+        atual = tipo;
+    }
 
     public char apresenta(){
-        return revealed ? '#' : '-';
+        return atual;
+    }
+
+    public String toString() {
+        return "Voce entrou em uma sala vazia";
     }
 }

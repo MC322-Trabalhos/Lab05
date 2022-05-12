@@ -1,10 +1,18 @@
 package src.pt.c40task.l05wumpus.componentes;
 
 public class Caverna {
-    Sala[][] salas;
+    private final Sala[][] salas;
 
     public Caverna(Sala[][] salas){
         this.salas = salas;
+    }
+
+    public void desocupaSala(Player jogador){
+        getSala(jogador.getPos()).desocupa();
+    }
+
+    public void ocupaNovaSala(Player jogador){
+        getSala(jogador.getPos()).ocupa(jogador);
     }
 
     public String toString(){
@@ -19,5 +27,7 @@ public class Caverna {
         return stringBuilder.toString();
     }
 
-
+    public Sala getSala(int[] pos) {
+        return salas[pos[0]][pos[1]];
+    }
 }
