@@ -58,7 +58,7 @@ public class Player extends Componente{
         	flechaAtirada = true;
         	finalNarracao += "Voce atirou sua flecha!\n";
         }
-    	if (tentaCapturarOuro) {
+    	if (tentaCapturarOuro && pegouOuro == false) {
     		finalNarracao += "O Ouro nao estava naquela sala!\n"; 
     		tentaCapturarOuro = false;
     	}
