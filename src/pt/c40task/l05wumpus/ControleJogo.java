@@ -3,6 +3,7 @@ package src.pt.c40task.l05wumpus;
 import src.pt.c40task.l05wumpus.componentes.Caverna;
 import src.pt.c40task.l05wumpus.componentes.Player;
 import src.pt.c40task.l05wumpus.utils.Acao;
+import src.pt.c40task.l05wumpus.utils.Interacao;
 
 import java.util.Scanner;
 
@@ -27,14 +28,17 @@ public class ControleJogo {
         while (comando != Acao.QUIT && jogador.isVivo()) {
             comando = leAcao();
             caverna.desocupaSala(jogador);
-            jogador.agir(comando, caverna.getSala(jogador.getPos()));
-            caverna.ocupaNovaSala(jogador);
-
+            Interacao acaoJogador = jogador.agir(comando);
+            Interacao inter = caverna.ocupaNovaSala(jogador);
+            score += inter.score + acaoJogador.score;
             System.out.print(caverna);
             System.out.println("Player: " + jogador.getNome());
-            System.out.print(caverna.getSala(jogador.getPos()));
+            System.out.print(acaoJogador.narracao + inter.narracao);
+            
             System.out.println("Score: " + score);
-            if (comando == Acao.QUIT) System.out.println("Volte sempre !");
+            if (jogador.hasEscaped()) {
+            	break;
+            }
             if (!jogador.isVivo()) {
             	System.out.println("Voce morreu!");
             	break;

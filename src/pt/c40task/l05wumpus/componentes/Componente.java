@@ -1,5 +1,7 @@
 package src.pt.c40task.l05wumpus.componentes;
 
+import src.pt.c40task.l05wumpus.utils.Interacao;
+
 public abstract class Componente {
 	protected char tipo;
 	
@@ -7,7 +9,5 @@ public abstract class Componente {
 		return tipo;
 	}
 	
-	public void interage(Player jogador) {
-		
-	}
+	public abstract Interacao interage(Player jogador);
 }

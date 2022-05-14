@@ -1,5 +1,7 @@
 package src.pt.c40task.l05wumpus.componentes;
 
+import src.pt.c40task.l05wumpus.utils.Interacao;
+
 public class Caverna {
     private final Sala[][] salas;
 
@@ -11,8 +13,13 @@ public class Caverna {
         getSala(jogador.getPos()).desocupa(jogador);
     }
 
-    public void ocupaNovaSala(Player jogador){
-        getSala(jogador.getPos()).ocupa(jogador);
+    public Interacao ocupaNovaSala(Player jogador){
+    	int[] posJogador = jogador.getPos();
+    	if (jogador.temOuro() && posJogador[0] == 0 && posJogador[1] == 0) {
+    		jogador.escapar();
+    		return new Interacao("Voce escapou da caverna!\n", 1000);
+    	}
+        return getSala(jogador.getPos()).ocupa(jogador);
     }
 
     public String toString(){

@@ -2,8 +2,6 @@ package src.pt.c40task.l05wumpus;
 
 import src.pt.c40task.l05wumpus.componentes.*;
 
-import java.util.ArrayList;
-
 public class MontadorCaverna {
 
     public static Caverna montaCaverna(String[][] input) {
@@ -42,7 +40,7 @@ public class MontadorCaverna {
     private static void colocaSala(int i, int j, char tipo, Sala[][] salas) {
         switch (tipo) {
             case 'W':
-                salas[i][j].adicionarComponente(new Wumpus());
+                salas[i][j].adicionarComponente(new Wumpus(salas[i][j]));
                 colocarEfeito(i, j, 'f', salas);
                 break;
             case 'B':
@@ -50,7 +48,7 @@ public class MontadorCaverna {
                 colocarEfeito(i, j, 'b', salas);
                 break;
             case 'O':
-            	salas[i][j].adicionarComponente(new Ouro());
+            	salas[i][j].adicionarComponente(new Ouro(salas[i][j]));
                 break;
             case 'b':
             	salas[i][j].adicionarComponente(new Brisa());

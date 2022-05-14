@@ -1,11 +1,13 @@
 package src.pt.c40task.l05wumpus.componentes;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
+
+import src.pt.c40task.l05wumpus.utils.Interacao;
 
 
 public class Sala {
 	private ArrayList<Componente> componentes = new ArrayList<Componente>();
+	private ArrayList<Componente> compAEliminar = new ArrayList<Componente>();
 	private Componente dominante;
     private boolean revelada = false;
 	private static Map<Character, Integer> prioridade = Map.of(
@@ -18,13 +20,21 @@ public class Sala {
 		'#', -1
 	);
 
-    public void ocupa(Player jogador){
+    public Interacao ocupa(Player jogador){
+    	int scoreTotal = 0;
+    	Interacao inter = new Interacao();
+    	StringBuilder narracao = new StringBuilder();
     	for (Componente comp : componentes) {
-    		comp.interage(jogador);
+    		inter = comp.interage(jogador);
+    		narracao.append(inter.narracao);
+    		narracao.append("\n");
+    		scoreTotal += inter.score;
     	}
         componentes.add(jogador);
+        removerComponentes();
         dominante = componenteDominante();
         revelada = true;
+        return new Interacao(narracao.toString(), scoreTotal);
     }
     
 
@@ -77,7 +87,14 @@ public class Sala {
     }
    
     
-    public void retirarComponente(Componente comp) {
-    	componentes.remove(comp);
+    public void pseudoexcluirComponente(Componente comp) {
+    	compAEliminar.add(comp);
+    }
+    
+    public void removerComponentes() {
+    	for (Componente comp : compAEliminar) {
+    		componentes.remove(comp);
+    	}
+    	compAEliminar.clear();
     }
 }

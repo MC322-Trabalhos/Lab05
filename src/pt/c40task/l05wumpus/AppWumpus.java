@@ -1,8 +1,5 @@
 package src.pt.c40task.l05wumpus;
 
-import src.pt.c40task.l05wumpus.componentes.Caverna;
-import src.pt.c40task.l05wumpus.utils.Acao;
-
 
 public class AppWumpus {
 

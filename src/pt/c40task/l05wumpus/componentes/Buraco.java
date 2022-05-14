@@ -1,5 +1,7 @@
 package src.pt.c40task.l05wumpus.componentes;
 
+import src.pt.c40task.l05wumpus.utils.Interacao;
+
 public class Buraco extends Componente{
 
     public Buraco(){
@@ -7,12 +9,9 @@ public class Buraco extends Componente{
     }
     
     @Override
-    public void interage(Player jogador) {
-		jogador.morre();
+    public Interacao interage(Player jogador) {
+    	jogador.morre();
+    	return new Interacao("Voce caiu num buraco!", -1000);
 	}
 
-    @Override
-    public String toString() {
-        return "Buraco";
-    }
 }
