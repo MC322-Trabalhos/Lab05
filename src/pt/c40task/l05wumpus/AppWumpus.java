@@ -19,8 +19,13 @@ public class AppWumpus {
       
       String[][] cave = tk.retrieveCave();
       System.out.println("=== Caverna");
-      // TODO FAZER A CLASSE JOGO
-      // TODO MOVIMENTO DO JOGADOR
+      // TODO GARANTIR Q O MAPA CRIADO È VALIDO OK
+      // TODO BURACO E WUMPUS TEM Q COLOCAR AS BRISAS E FEDORES OK
+      // TODO VERIFICAR SOBREPOSICAO DE BURACO WUMPUS E OURO OK
+      // TODO ARRUMAR CONTROLE JOGO
+      // TODO ENTRADA POR ARQUIVO CSV
+      // TODO ARRUMAR OS NOSSOS CSV
+      // TODO README
 
       ControleJogo jogo = new ControleJogo(cave);
       jogo.run();

@@ -6,11 +6,11 @@ import src.pt.c40task.l05wumpus.utils.Interacao;
 
 
 public class Sala {
-	private ArrayList<Componente> componentes = new ArrayList<Componente>();
-	private ArrayList<Componente> compAEliminar = new ArrayList<Componente>();
+	private ArrayList<Componente> componentes = new ArrayList<>();
+	private ArrayList<Componente> compAEliminar = new ArrayList<>();
 	private Componente dominante;
     private boolean revelada = false;
-	private static Map<Character, Integer> prioridade = Map.of(
+	private static final Map<Character, Integer> prioridade = Map.of(
 		'O', 3,
 		'B', 3,
 		'W', 3,
@@ -43,31 +43,23 @@ public class Sala {
         dominante = componenteDominante();
     }
     
-    public void adicionarComponente(Componente comp) {
+    public boolean adicionarComponente(Componente comp) {
+		//TODO ver se precisa disso:
+//		if (comp.getTipo() == 'W' && getComponente('W') != null ||
+//				comp.getTipo() == 'B' && getComponente('B') != null ||
+//				comp.getTipo() == 'O' && getComponente('O') != null
+//		) return false;
     	componentes.add(comp);
-    	dominante = componenteDominante();
+		dominante = componenteDominante();
+		return true;
     }
 
     public char apresenta(){
     	if (!revelada) return '-';
     	if (componentes.size() == 0) return '#';
-        return dominante.getTipo();
+		return dominante.getTipo();
     }
 
-    public String toString() {
-    	if (componentes.size() == 1) return "Voce entrou em uma sala vazia\n";
-    	StringBuilder stringBuilder = new StringBuilder();
-    	stringBuilder.append("Voce encontrou:\n");
-    	for (Componente comp : componentes) {
-    		if(comp.getTipo() != 'P') {
-    			stringBuilder.append(comp.toString());
-    			stringBuilder.append('\n');
-    		}
-    	}
-        return stringBuilder.toString();
-    }
-    
-    
     public Componente componenteDominante() {
     	if (componentes.size() == 0) return null;
     	Componente prioritario = componentes.get(0);
@@ -81,7 +73,7 @@ public class Sala {
     
     public Componente getComponente(char tipo) {
     	for (Componente comp : componentes) {
-    		if (comp.tipo == 'O') return comp;
+    		if (comp.tipo == tipo) return comp;
     	}
     	return null;
     }

@@ -5,58 +5,39 @@ import src.pt.c40task.l05wumpus.componentes.*;
 public class MontadorCaverna {
 
     public static Caverna montaCaverna(String[][] input) {
-        Sala[][] salas = new Sala[4][4];
+        Caverna caverna = new Caverna();
         if (input[0][2].charAt(0) != 'P') return null;
-        
-        for (int i = 0; i < 4; i++)
-            for (int j = 0; j < 4; j++)
-                salas[i][j] = new Sala();
+        int wumpusCount = 0, buracoCount = 0, ouroCount = 0;
            
         for (String[] linha : input) {
             int i = linha[0].charAt(0) - '1';
             int j = linha[1].charAt(0) - '1';
-            colocaSala(i, j, linha[2].charAt(0), salas);
+            Componente comp = null;
+
+            switch (linha[2].charAt(0)) {
+                case 'W':
+                    comp = new Wumpus(caverna.getSala(i, j));
+                    Wumpus.colocarFedor(i, j, caverna);
+                    wumpusCount++;
+                    break;
+                case 'B':
+                    comp = new Buraco();
+                    Buraco.colocarBrisa(i, j, caverna);
+                    buracoCount++;
+                    break;
+                case 'O':
+                    comp = new Ouro(caverna.getSala(i, j));
+                    ouroCount++;
+                    break;
+                case 'P':
+                    if (i != 0 || j != 0 ) return null;
+            }
+            if (comp != null) if (!caverna.adicionaComponenteNaSala(i, j, comp)) return null;
+
         }
 
-        return new Caverna(salas);
-    }
-    
- 
-    private static void colocarEfeito(int i, int j, char tipo, Sala[][] salas) {
-        if (i - 1 >= 0) {
-            colocaSala(i - 1, j, tipo, salas);
-        }
-        if (i + 1 < 4) {
-            colocaSala(i + 1, j, tipo, salas);
-        }
-        if (j - 1 >= 0) {
-            colocaSala(i, j - 1, tipo, salas);
-        }
-        if (j + 1 < 4) {
-            colocaSala(i, j + 1, tipo, salas);
-        }
-    }
+        if (wumpusCount != 1 || ouroCount != 1 || buracoCount > 3 || buracoCount < 2) return null;
 
-    private static void colocaSala(int i, int j, char tipo, Sala[][] salas) {
-        switch (tipo) {
-            case 'W':
-                salas[i][j].adicionarComponente(new Wumpus(salas[i][j]));
-                colocarEfeito(i, j, 'f', salas);
-                break;
-            case 'B':
-            	salas[i][j].adicionarComponente(new Buraco());
-                colocarEfeito(i, j, 'b', salas);
-                break;
-            case 'O':
-            	salas[i][j].adicionarComponente(new Ouro(salas[i][j]));
-                break;
-            case 'b':
-            	salas[i][j].adicionarComponente(new Brisa());
-                
-                break;
-            case 'f':
-            	salas[i][j].adicionarComponente(new Fedor());
-                break;
-        }
+        return caverna;
     }
 }

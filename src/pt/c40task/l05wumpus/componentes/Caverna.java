@@ -5,8 +5,11 @@ import src.pt.c40task.l05wumpus.utils.Interacao;
 public class Caverna {
     private final Sala[][] salas;
 
-    public Caverna(Sala[][] salas){
-        this.salas = salas;
+    public Caverna(){
+        salas = new Sala[4][4];
+        for (int i = 0; i < 4; i++)
+            for (int j = 0; j < 4; j++)
+                salas[i][j] = new Sala();
     }
 
     public void desocupaSala(Player jogador){
@@ -37,4 +40,14 @@ public class Caverna {
     public Sala getSala(int[] pos) {
         return salas[pos[0]][pos[1]];
     }
+
+    public Sala getSala(int i, int j) {
+        return salas[i][j];
+    }
+
+    public boolean adicionaComponenteNaSala(int i, int j, Componente comp) {
+        return salas[i][j].adicionarComponente(comp);
+    }
+
+
 }
