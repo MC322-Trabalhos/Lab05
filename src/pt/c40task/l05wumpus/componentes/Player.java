@@ -45,7 +45,12 @@ public class Player extends Componente{
             	else return new Interacao("Nao ha flechas restantes!\n", 0);
             case CAPTURE:
             	tentaCapturarOuro = true;
-            	return new Interacao("Voce tenta capturar o Ouro...\n", 0);
+            	String resultadoOuro = "";
+            	if (pegouOuro){
+            		resultadoOuro = "Voce ja pegou o ouro!\n";
+            		tentaCapturarOuro = false;
+            	}
+            	return new Interacao("Voce tenta capturar o Ouro...\n" + resultadoOuro, 0);
             case QUIT:
             	return new Interacao("Volte sempre!\n", 0);
             default:

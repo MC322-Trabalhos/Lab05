@@ -34,15 +34,16 @@ public class ControleJogo {
             System.out.print(caverna);
             System.out.println("Player: " + jogador.getNome());
             System.out.print(acaoJogador.narracao + inter.narracao);
-            
-            System.out.println("Score: " + score);
             if (jogador.hasEscaped()) {
+                System.out.println("Score: " + score);
             	break;
             }
             if (!jogador.isVivo()) {
+            	System.out.println("Score: " + score);
             	System.out.println("Voce morreu!");
             	break;
             }
+            System.out.println("Score: " + score);
         }
     }
 
