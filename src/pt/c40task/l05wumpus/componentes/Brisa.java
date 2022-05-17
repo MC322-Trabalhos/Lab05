@@ -13,4 +13,9 @@ public class Brisa extends Componente{
     public Interacao interage(Player jogador) {
     	return new Interacao("Voce sente uma leve brisa!", 0);
     }
+
+    @Override
+    public Componente clone() {
+        return new Brisa();
+    }
 }

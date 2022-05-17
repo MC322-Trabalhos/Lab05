@@ -32,7 +32,7 @@ public class MontadorCaverna {
                 case 'P':
                     if (i != 0 || j != 0 ) return null;
             }
-            if (comp != null) if (!caverna.adicionaComponenteNaSala(i, j, comp)) return null;
+            if (comp != null) caverna.adicionaComponenteNaSala(i, j, comp);
 
         }
 

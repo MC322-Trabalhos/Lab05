@@ -15,7 +15,7 @@ public class Ouro extends Componente{
     public Interacao interage(Player jogador) {
     	if (jogador.tentouCapturarOuro()) {
     		jogador.capturarOuro();
-    		salaOuro.pseudoexcluirComponente(this);
+    		salaOuro.excluirComponenteTardio(this);
     		return new Interacao("Voce capturou o Ouro!", 0);
     	}
     	return new Interacao("Voce encontrou o Ouro!", 0);

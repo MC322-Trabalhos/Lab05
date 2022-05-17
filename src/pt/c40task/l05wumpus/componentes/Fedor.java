@@ -10,7 +10,13 @@ public class Fedor extends Componente {
     
     @Override
     public Interacao interage(Player jogador) {
-		return new Interacao("Voce sente um cheiro de carne podre!", 0);
-    	
+		  return new Interacao("Voce sente um cheiro de carne podre!", 0);
     }
+
+    @Override
+    public Componente clone() {
+        return new Fedor();
+    }
+
+
 }

@@ -4,7 +4,7 @@ import java.util.Random;
 
 import src.pt.c40task.l05wumpus.utils.Interacao;
 
-public class Wumpus extends Componente{
+public class Wumpus extends Componente implements ComponenteComEfeito {
 	private Sala salaWumpus;
 	
     public Wumpus(Sala salaWumpus){
@@ -13,7 +13,7 @@ public class Wumpus extends Componente{
     }
     
     public void morrer() {
-    	salaWumpus.pseudoexcluirComponente(this);
+    	salaWumpus.excluirComponenteTardio(this);
     }
    
     @Override
@@ -30,17 +30,6 @@ public class Wumpus extends Componente{
     }
 
 	public static void colocarFedor(int i, int j, Caverna caverna){
-		if (i - 1 >= 0) {
-			caverna.adicionaComponenteNaSala(i - 1, j, new Fedor());
-		}
-		if (i + 1 < 4) {
-			caverna.adicionaComponenteNaSala(i + 1, j, new Fedor());
-		}
-		if (j - 1 >= 0) {
-			caverna.adicionaComponenteNaSala(i, j - 1, new Fedor());
-		}
-		if (j + 1 < 4) {
-			caverna.adicionaComponenteNaSala(i, j + 1, new Fedor());
-		}
+		ComponenteComEfeito.colocarEfeito(i, j, caverna, new Fedor());
 	}
 }

@@ -1,55 +1,30 @@
 package src.pt.c40task.l05wumpus;
 
-import src.pt.c40task.l05wumpus.componentes.Caverna;
-import src.pt.c40task.l05wumpus.componentes.Player;
 import src.pt.c40task.l05wumpus.utils.Acao;
-import src.pt.c40task.l05wumpus.utils.Interacao;
 
 import java.util.Scanner;
 
 public class ControleJogo {
     private final Scanner keyboard = new Scanner(System.in);
-    private Caverna caverna;
-    private Player jogador;
     private int score = 0;
 
-    public ControleJogo(String[][] arquivoCaverna){
-        caverna = MontadorCaverna.montaCaverna(arquivoCaverna);
-        System.out.print("Entre com um nome: ");
-        String nome = keyboard.nextLine();
-        jogador = new Player(nome);
+    public int getScore() {
+        return score;
     }
 
-    public void run() {
-        Acao comando = Acao.INVALID;
-        caverna.ocupaNovaSala(jogador);
-        System.out.println(caverna);
-        System.out.println("Player: " + jogador.getNome());
-        while (comando != Acao.QUIT && jogador.isVivo()) {
-            comando = leAcao();
-            caverna.desocupaSala(jogador);
-            Interacao acaoJogador = jogador.agir(comando);
-            Interacao inter = caverna.ocupaNovaSala(jogador);
-            score += inter.score + acaoJogador.score;
-            System.out.print(caverna);
-            System.out.println("Player: " + jogador.getNome());
-            System.out.print(acaoJogador.narracao + inter.narracao);
-            if (jogador.hasEscaped()) {
-                System.out.println("Score: " + score);
-            	break;
-            }
-            if (!jogador.isVivo()) {
-            	System.out.println("Score: " + score);
-            	System.out.println("Voce morreu!");
-            	break;
-            }
-            System.out.println("Score: " + score);
-        }
+    public void addScore(int val){
+        score += val;
     }
 
-    private Acao leAcao() {
-        String input = keyboard.nextLine();
-        char c = input.charAt(0);
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String leString(){
+        return keyboard.nextLine();
+    }
+
+    public Acao charToAcao(char c){
         Acao acao = Acao.INVALID;
         switch (c) {
             case 'w':
@@ -61,7 +36,7 @@ public class ControleJogo {
             case 'a':
                 acao = Acao.LEFT;
                 break;
-            case 'd':
+                case 'd':
                 acao = Acao.RIGHT;
                 break;
             case 'k':
@@ -75,5 +50,11 @@ public class ControleJogo {
                 break;
         }
         return acao;
+    }
+
+    public Acao leAcao() {
+        String input = keyboard.nextLine();
+        char c = input.charAt(0);
+        return charToAcao(c);
     }
 }

@@ -10,4 +10,9 @@ public abstract class Componente {
 	}
 	
 	public abstract Interacao interage(Player jogador);
+
+	public Componente clone(){
+		return null;
+	}
+
 }

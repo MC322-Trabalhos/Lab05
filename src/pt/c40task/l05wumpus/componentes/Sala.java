@@ -43,15 +43,9 @@ public class Sala {
         dominante = componenteDominante();
     }
     
-    public boolean adicionarComponente(Componente comp) {
-		//TODO ver se precisa disso:
-//		if (comp.getTipo() == 'W' && getComponente('W') != null ||
-//				comp.getTipo() == 'B' && getComponente('B') != null ||
-//				comp.getTipo() == 'O' && getComponente('O') != null
-//		) return false;
+    public void adicionarComponente(Componente comp) {
     	componentes.add(comp);
 		dominante = componenteDominante();
-		return true;
     }
 
     public char apresenta(){
@@ -79,7 +73,7 @@ public class Sala {
     }
    
     
-    public void pseudoexcluirComponente(Componente comp) {
+    public void excluirComponenteTardio(Componente comp) {
     	compAEliminar.add(comp);
     }
     
