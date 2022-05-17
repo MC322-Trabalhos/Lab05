@@ -43,9 +43,11 @@ public class Sala {
         dominante = componenteDominante();
     }
     
-    public void adicionarComponente(Componente comp) {
+    public boolean adicionarComponente(Componente comp) {
+		if (dominante != null && prioridade.get(comp.tipo) == 3 && prioridade.get(dominante.tipo) == 3) return false;
     	componentes.add(comp);
 		dominante = componenteDominante();
+		return true;
     }
 
     public char apresenta(){

@@ -22,15 +22,16 @@ public class AppWumpus {
 
       Caverna caverna = MontadorCaverna.montaCaverna(cave);
       if (caverna == null){
-         System.out.println("=== Caverna");
+         tk.stop();
          System.out.println("Tabuleiro invalido");
          return;
       }
 
       ControleJogo controle = new ControleJogo();
-      String nomeJogador = "Aderbal";
+      String nomeJogador = "Alcebiades";
 
       if (arquivoMovimentos == null){
+         System.out.println("=== Caverna");
          System.out.print("Entre com um nome: ");
          nomeJogador = controle.leString();
       }

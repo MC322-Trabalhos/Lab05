@@ -40,8 +40,8 @@ public class Caverna {
         return salas[i][j];
     }
 
-    public void adicionaComponenteNaSala(int i, int j, Componente comp) {
-        salas[i][j].adicionarComponente(comp);
+    public boolean adicionaComponenteNaSala(int i, int j, Componente comp) {
+        return salas[i][j].adicionarComponente(comp);
     }
 
     public char[][] apresenta(){
