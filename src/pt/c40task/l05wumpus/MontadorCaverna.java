@@ -16,14 +16,16 @@ public class MontadorCaverna {
 
             switch (linha[2].charAt(0)) {
                 case 'W':
-                    comp = new Wumpus(caverna.getSala(i, j));
-                    Wumpus.colocarFedor(i, j, caverna);
+                    Wumpus wumpus = new Wumpus(caverna.getSala(i, j));
+                    wumpus.colocarEfeito(i, j, caverna);
                     wumpusCount++;
+                    comp = wumpus;
                     break;
                 case 'B':
-                    comp = new Buraco();
-                    Buraco.colocarBrisa(i, j, caverna);
+                    Buraco buraco = new Buraco();
+                    buraco.colocarEfeito(i, j, caverna);
                     buracoCount++;
+                    comp = buraco;
                     break;
                 case 'O':
                     comp = new Ouro(caverna.getSala(i, j));

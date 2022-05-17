@@ -17,11 +17,6 @@ public class Caverna {
     }
 
     public Interacao ocupaNovaSala(Player jogador){
-    	int[] posJogador = jogador.getPos();
-    	if (jogador.temOuro() && posJogador[0] == 0 && posJogador[1] == 0) {
-    		jogador.escapar();
-    		return new Interacao("Voce escapou da caverna!\n", 1000);
-    	}
         return getSala(jogador.getPos()).ocupa(jogador);
     }
 
@@ -47,6 +42,14 @@ public class Caverna {
 
     public void adicionaComponenteNaSala(int i, int j, Componente comp) {
         salas[i][j].adicionarComponente(comp);
+    }
+
+    public char[][] apresenta(){
+        char[][] matrizCaverna = new char[4][4];
+        for (int i = 0; i < 4; i++)
+            for (int j = 0; j < 4; j++)
+                matrizCaverna[i][j] = getSala(i, j).apresenta();
+        return matrizCaverna;
     }
 
 

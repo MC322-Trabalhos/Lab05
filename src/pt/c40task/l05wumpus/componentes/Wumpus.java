@@ -29,7 +29,7 @@ public class Wumpus extends Componente implements ComponenteComEfeito {
     	}
     }
 
-	public static void colocarFedor(int i, int j, Caverna caverna){
-		ComponenteComEfeito.colocarEfeito(i, j, caverna, new Fedor());
+	public void colocarEfeito(int i, int j, Caverna caverna){
+		ComponenteComEfeito.colocarEfeitoGeral(i, j, caverna, new Fedor());
 	}
 }

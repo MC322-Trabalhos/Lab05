@@ -1,7 +1,7 @@
 package src.pt.c40task.l05wumpus.componentes;
 
 public interface ComponenteComEfeito {
-    public static void colocarEfeito(int i, int j, Caverna caverna, Componente efeito){
+    public static void colocarEfeitoGeral(int i, int j, Caverna caverna, Componente efeito){
 		if (i - 1 >= 0) {
 			caverna.adicionaComponenteNaSala(i - 1, j, efeito.clone());
 		}
@@ -15,4 +15,6 @@ public interface ComponenteComEfeito {
 			caverna.adicionaComponenteNaSala(i, j + 1, efeito.clone());
 		}
 	}
+
+	public void colocarEfeito(int i, int j, Caverna caverna);
 }

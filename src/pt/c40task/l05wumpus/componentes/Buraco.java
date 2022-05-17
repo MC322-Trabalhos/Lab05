@@ -2,7 +2,7 @@ package src.pt.c40task.l05wumpus.componentes;
 
 import src.pt.c40task.l05wumpus.utils.Interacao;
 
-public class Buraco extends Componente{
+public class Buraco extends Componente implements ComponenteComEfeito{
 
     public Buraco(){
         tipo = 'B';
@@ -14,8 +14,8 @@ public class Buraco extends Componente{
     	return new Interacao("Voce caiu num buraco!", -1000);
 	}
 
-    public static void colocarBrisa(int i, int j, Caverna caverna){
-		ComponenteComEfeito.colocarEfeito(i, j, caverna, new Brisa());
+    public void colocarEfeito(int i, int j, Caverna caverna){
+		ComponenteComEfeito.colocarEfeitoGeral(i, j, caverna, new Brisa());
 	}
 
 }

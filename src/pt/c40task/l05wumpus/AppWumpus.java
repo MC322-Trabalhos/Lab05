@@ -7,9 +7,6 @@ import src.pt.c40task.l05wumpus.utils.Interacao;
 
 public class AppWumpus {
 
-//   public static void main(String[] args) {
-//      System.out.println((new int[2])[1]);
-//   }
    public static void main(String[] args) {
       AppWumpus.executaJogo(
             (args.length > 0) ? args[0] : null,
@@ -22,27 +19,17 @@ public class AppWumpus {
       Toolkit tk = Toolkit.start(arquivoCaverna, arquivoSaida, arquivoMovimentos);
       
       String[][] cave = tk.retrieveCave();
-      System.out.println("=== Caverna");
-
-
-      // TODO BURACO E WUMPUS TEM Q COLOCAR AS BRISAS E FEDORES OK
-      // TODO Interacao sem get set
-      // TODO README
-      // TODO ENTRADA POR ARQUIVO CSV
-      // TODO ARRUMAR OS NOSSOS CSV
-
-      // arquivoMovimentos = null;
-
 
       Caverna caverna = MontadorCaverna.montaCaverna(cave);
       if (caverna == null){
+         System.out.println("=== Caverna");
          System.out.println("Tabuleiro invalido");
          return;
       }
 
       ControleJogo controle = new ControleJogo();
       String nomeJogador = "Aderbal";
-      
+
       if (arquivoMovimentos == null){
          System.out.print("Entre com um nome: ");
          nomeJogador = controle.leString();
@@ -51,7 +38,6 @@ public class AppWumpus {
       Player jogador = new Player(nomeJogador);
       Acao comando = Acao.INVALID;
       caverna.ocupaNovaSala(jogador);
-
 
       if (arquivoMovimentos == null){
          System.out.println(caverna);
@@ -77,6 +63,7 @@ public class AppWumpus {
          char status = 'P';
          for (int i = 0; i < movimentos.length(); i++){
             comando = controle.charToAcao(movimentos.charAt(i));
+            if (comando == Acao.QUIT) break;
             caverna.desocupaSala(jogador);
             
             Interacao acaoJogador = jogador.agir(comando);
@@ -85,7 +72,7 @@ public class AppWumpus {
       
             if (!jogador.isVivo()) status = 'L';
             else if (jogador.hasEscaped()) status = 'W';
-            // tk.writeBoard(caverna, controle.getScore(), status);
+            tk.writeBoard(caverna.apresenta(), controle.getScore(), status);
          }
       }
 

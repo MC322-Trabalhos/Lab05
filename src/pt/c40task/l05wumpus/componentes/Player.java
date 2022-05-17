@@ -54,9 +54,10 @@ public class Player extends Componente{
             case QUIT:
             	return new Interacao("Volte sempre!\n", 0);
             default:
-            	return new Interacao("Tecla inválida!\n", 0);
+            	return new Interacao("Tecla invï¿½lida!\n", 0);
         }
         String finalNarracao = "";
+        int finalScore = -15;
         if (flechaAtirada) flechaAtirada = false;
         if (flechaEquipada) {
         	flechaEquipada = false;
@@ -67,7 +68,12 @@ public class Player extends Componente{
     		finalNarracao += "O Ouro nao estava naquela sala!\n"; 
     		tentaCapturarOuro = false;
     	}
-        return new Interacao(finalNarracao, -15);
+        if (temOuro() && pos[0] == 0 && pos[1] == 0) {
+    		escapar();
+    		finalNarracao += "Voce escapou da caverna!\n";
+            finalScore += 1000;
+    	}
+        return new Interacao(finalNarracao, finalScore);
     }
 
     public int[] getPos() {
