@@ -62,6 +62,7 @@ public class AppWumpus {
       } else {
          String movimentos = tk.retrieveMovements();
          char status = 'P';
+         tk.writeBoard(caverna.apresenta(), controle.getScore(), status);
          for (int i = 0; i < movimentos.length(); i++){
             comando = controle.charToAcao(movimentos.charAt(i));
             if (comando == Acao.QUIT) break;

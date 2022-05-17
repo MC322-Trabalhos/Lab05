@@ -41,7 +41,7 @@ public class Player extends Componente{
                 break;
             case ARROW:
             	equipaFlecha();
-            	if (flechaEquipada) return new Interacao("Voce equipa uma flecha...\n", -100);
+            	if (flechaEquipada) return new Interacao("Voce equipa uma flecha...\n", 0);
             	else return new Interacao("Nao ha flechas restantes!\n", 0);
             case CAPTURE:
             	tentaCapturarOuro = true;
@@ -63,6 +63,7 @@ public class Player extends Componente{
         	flechaEquipada = false;
         	flechaAtirada = true;
         	finalNarracao += "Voce atirou sua flecha!\n";
+            finalScore -= 100;
         }
     	if (tentaCapturarOuro && pegouOuro == false) {
     		finalNarracao += "O Ouro nao estava naquela sala!\n"; 
