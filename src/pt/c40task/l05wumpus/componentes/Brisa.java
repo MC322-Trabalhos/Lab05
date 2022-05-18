@@ -6,6 +6,7 @@ public class Brisa extends Componente{
 
     public Brisa(){
         tipo = 'b';
+        prioridade = 0;
     }
     
     

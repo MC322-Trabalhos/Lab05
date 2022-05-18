@@ -10,6 +10,7 @@ public class Wumpus extends Componente implements ComponenteComEfeito {
     public Wumpus(Sala salaWumpus){
         tipo = 'W';
         this.salaWumpus = salaWumpus;
+		prioridade = 3;
     }
     
     public void morrer() {

@@ -9,6 +9,7 @@ public class Ouro extends Componente{
     public Ouro(Sala salaOuro){
         tipo = 'O';
         this.salaOuro = salaOuro;
+        prioridade = 3;
     }
     
     @Override

@@ -15,6 +15,7 @@ public class Player extends Componente{
         this.nome = nome;
         pos = new int[]{0, 0};
         tipo = 'P';
+        prioridade = 2;
     }
 
     public void equipaFlecha() {

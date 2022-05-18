@@ -6,6 +6,7 @@ public class Buraco extends Componente implements ComponenteComEfeito{
 
     public Buraco(){
         tipo = 'B';
+        prioridade = 3;
     }
     
     @Override

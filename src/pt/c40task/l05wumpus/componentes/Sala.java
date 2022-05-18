@@ -1,6 +1,5 @@
 package src.pt.c40task.l05wumpus.componentes;
 import java.util.ArrayList;
-import java.util.Map;
 
 import src.pt.c40task.l05wumpus.utils.Interacao;
 
@@ -10,15 +9,6 @@ public class Sala {
 	private ArrayList<Componente> compAEliminar = new ArrayList<>();
 	private Componente dominante;
     private boolean revelada = false;
-	private static final Map<Character, Integer> prioridade = Map.of(
-		'O', 3,
-		'B', 3,
-		'W', 3,
-		'P', 2,
-		'f', 1,
-		'b', 0,
-		'#', -1
-	);
 
     public Interacao ocupa(Player jogador){
     	int scoreTotal = 0;
@@ -44,7 +34,7 @@ public class Sala {
     }
     
     public boolean adicionarComponente(Componente comp) {
-		if (dominante != null && prioridade.get(comp.tipo) == 3 && prioridade.get(dominante.tipo) == 3) return false;
+		if (dominante != null && comp.getPrioridade() == 3 && dominante.getPrioridade() == 3) return false;
     	componentes.add(comp);
 		dominante = componenteDominante();
 		return true;
@@ -60,7 +50,7 @@ public class Sala {
     	if (componentes.size() == 0) return null;
     	Componente prioritario = componentes.get(0);
     	for (int i = 1; i < componentes.size(); i++) {
-    		if (prioridade.get(componentes.get(i).getTipo()) > prioridade.get(prioritario.getTipo())) {
+    		if (componentes.get(i).getPrioridade() > prioritario.getPrioridade()) {
     			prioritario = componentes.get(i);
     		}
     	}

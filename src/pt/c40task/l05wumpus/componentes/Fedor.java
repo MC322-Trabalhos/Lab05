@@ -6,6 +6,7 @@ public class Fedor extends Componente {
 
     public Fedor(){
         tipo = 'f';
+        prioridade = 1;
     }
     
     @Override
