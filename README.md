@@ -1,5 +1,5 @@
 # Lab05 - O Mundo de Wumpus
-[Arquivos .java](src/pt/c04task/l05wumpus/)
+[Arquivos .java](src/pt/c40task/l05wumpus/)
 ## Detalhes da equipe:
 - Curso: Engenharia da Computação
 - Nome da equipe: FOXHOUND
